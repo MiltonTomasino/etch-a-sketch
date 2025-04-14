@@ -1,8 +1,11 @@
+let isRandomColorsActive = false;
+
 function populateCanvas(size) {
     let canvas = document.querySelector(".canvas");
     let pixels = canvas.querySelectorAll("div");
     pixels.forEach(pixel => pixel.remove());
-    let header = document.querySelector(".header");
+    let gridSize = document.querySelector("p");
+    gridSize.textContent = `Current Grid Size: ${size} x ${size}`
     let pixelSize = 500 / size;
 
     // fill the canvas with divs that act as pixels
@@ -13,7 +16,11 @@ function populateCanvas(size) {
         newDiv.style.height = `${pixelSize}px`;
         newDiv.style.flex = `0 0 ${pixelSize}px`
         newDiv.addEventListener("mouseover", () => {
-            newDiv.style.backgroundColor = "black";
+            if (!isRandomColorsActive) {
+                newDiv.style.backgroundColor = "black";
+            } else {
+                newDiv.style.backgroundColor = randomColor();
+            }
         })
         newDiv.classList.add("pixel");
         canvas.appendChild(newDiv);
@@ -22,18 +29,38 @@ function populateCanvas(size) {
 
 populateCanvas(16);
 
-function changePixelSize(size) {
+function changeGridSize(size) {
     populateCanvas(size);
 }
 
-// change the size of the brush size
+// change the size of the grid size
 function openPrompt() {
-    let brushSize = prompt("Change the Size of the Brush: 2 <= brush size <= 100 ");
-    if (brushSize > 100) {
-        alert("Brush size too big!")
-    } else if (brushSize < 2) {
-        alert("Brush size too small!");
+    let gridSize = prompt("Change the Size of the Grid:  ");
+    console.log(gridSize);
+    
+
+    if (gridSize === null || gridSize == "") {
+        changeGridSize(16);
     } else {
-        changePixelSize(brushSize)
+        if (gridSize > 100) {
+            alert("Grid size too big!")
+        } else if (gridSize < 2) {
+            alert("Grid size too small!");
+        } else {
+            changeGridSize(gridSize)
+        }
     }
+}
+
+function randomColor() {
+    let R = Math.floor(Math.random() * 256);
+    let G = Math.floor(Math.random() * 256);
+    let B = Math.floor(Math.random() * 256);
+
+    return `rgb(${R}, ${G}, ${B})`;
+}
+
+function activateRandomColor() {
+    isRandomColorsActive = !isRandomColorsActive;
+    
 }

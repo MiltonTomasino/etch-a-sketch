@@ -10,6 +10,12 @@
     justify-self: center;
 }
 
+.header2 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 .canvas {
     outline: 2px solid red;
     display: flex;
