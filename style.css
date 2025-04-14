@@ -6,8 +6,11 @@
 
 .container {
     outline: 2px solid black;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     justify-self: center;
+    gap: 10px;
 }
 
 .header2 {
