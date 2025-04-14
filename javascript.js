@@ -60,7 +60,14 @@ function randomColor() {
     return `rgb(${R}, ${G}, ${B})`;
 }
 
-function activateRandomColor() {
+let randomBtn = document.querySelector("#random-btn");
+
+randomBtn.addEventListener("click", () => {
     isRandomColorsActive = !isRandomColorsActive;
-    
-}
+
+    if (isRandomColorsActive) {
+        randomBtn.textContent = "Random Colors: ON";
+    } else {
+        randomBtn.textContent = "Random Colors: OFF";
+    }
+}) 
