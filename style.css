@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    outline: 2px solid black;
+    text-align: center;
+    justify-self: center;
+}
+
+.canvas {
+    outline: 2px solid red;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    align-content: start;
+}
+
+.pixel {
+    width: 31.25px;
+    height: 31.25px;
+    flex: 0 0 31.25px;
+}
