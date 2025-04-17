@@ -99,5 +99,10 @@ function incrementColorOpacity() {
     }
 }
 
+let clearBtn = document.querySelector("#clear-btn");
+
+clearBtn.addEventListener("click", () => {
+    populateCanvas(16);
+})
 
 populateCanvas(16);
